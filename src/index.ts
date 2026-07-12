@@ -8,3 +8,4 @@ export * from "./types/track";
 export * from "./types/album";
 export * from "./types/user";
 export * from "./types/chart";
+export * from "./types/geo";

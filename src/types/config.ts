@@ -18,7 +18,7 @@ export interface LastFmConfigApi {
 export interface LastFmConfigRateLimit {
   /**
    * Maximum number of concurrent token requests allowed in the bucket execution loop.
-   * @default 2
+   * @default 3
    */
   bucketMax?: number;
   /**

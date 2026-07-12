@@ -32,7 +32,11 @@ export type LastFmMethod =
 
   // --- Chart
   | "chart.gettoptracks"
-  | "chart.gettopartists";
+  | "chart.gettopartists"
+
+  // --- Geo
+  | "geo.gettoptracks"
+  | "geo.gettopartists";
 
 export type CustomMetadata<T extends Record<string, unknown> = Record<string, unknown>> = T;
 

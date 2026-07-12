@@ -9,6 +9,7 @@ import { ArtistStructure } from "./structures/artist.structure";
 import { AlbumStructure } from "./structures/album.structure";
 import { UserStructure } from "./structures/user.structure";
 import { ChartStructure } from "./structures/chart.structure";
+import { GeoStructure } from "./structures/geo.structure";
 
 export default class LastFm extends EventEmitter {
   public readonly auth: AuthStructure;
@@ -17,6 +18,7 @@ export default class LastFm extends EventEmitter {
   public readonly album: AlbumStructure;
   public readonly user: UserStructure;
   public readonly chart: ChartStructure;
+  public readonly geo: GeoStructure;
 
   private readonly c: LastFmContext;
 
@@ -35,6 +37,7 @@ export default class LastFm extends EventEmitter {
     this.album = new AlbumStructure(this.c);
     this.user = new UserStructure(this.c);
     this.chart = new ChartStructure(this.c);
+    this.geo = new GeoStructure(this.c);
 
     this.c.on("sessionExpire", (message, meta) => this.emit("sessionExpire", message, meta));
     this.c.on("requestFailed", (payload) => this.emit("requestFailed", payload));

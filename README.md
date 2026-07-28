@@ -1,8 +1,12 @@
-# lastfm-client
+# @musikbotapp/lastfm-client
+
+[![npm version](https://img.shields.io/npm/v/@musikbotapp/lastfm-client?style=for-the-badge&logo=npm&logoColor=white&color=CB3837)](https://www.npmjs.com/package/@musikbotapp/lastfm-client)
+[![Language](https://img.shields.io/badge/Language-TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
 Zero-dependency TypeScript client for the Last.fm API with normalized responses and rate limiting.
 
-## Quick Start
+## Quickstart
 
 ### 1. Installation
 

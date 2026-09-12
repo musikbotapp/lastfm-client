@@ -1,0 +1,8 @@
+**/.vscode/
+**/dist/
+**/test/
+**/package-lock.json
+**/node_modules/
+
+docs/.astro/
+docs/src/content/docs/api

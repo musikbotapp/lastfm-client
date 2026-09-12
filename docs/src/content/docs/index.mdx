@@ -1,0 +1,38 @@
+---
+title: LastFm Client
+template: splash
+hero:
+  tagline: Zero-dependency TypeScript client for the Last.fm API with normalized responses and rate limiting.
+  actions:
+    - text: Getting Started
+      link: /lastfm-client/getting-started/quickstart/
+      icon: right-arrow
+    - text: API Reference
+      link: /lastfm-client/api/classes/lastfmclient/
+      icon: external
+      variant: minimal
+---
+
+import { Card, CardGrid } from "@astrojs/starlight/components";
+
+<CardGrid stagger>
+  <Card title="Zero-Dependency Core" icon="setting">
+    Fully typed TypeScript client for the Last.fm API with no external runtime dependencies.
+  </Card>
+  <Card title="Normalized Responses" icon="approve-check">
+    Every method returns parsed, consistently shaped, fully typed responses instead of raw API payloads.
+  </Card>
+  <Card title="Built-In Rate Limiting" icon="list-format">
+    Configurable token-bucket limiter with queueing and backoff for both rate-limit and service-outage scenarios.
+  </Card>
+  <Card title="Resilient Networking" icon="magnifier">
+    Automatic retries with configurable strategies for timeouts, rate limits, and outages, backed by request abort
+    timeouts.
+  </Card>
+  <Card title="Batch Scrobbling" icon="rocket">
+    Scrobble single tracks or submit batches in one call, with per-batch success counts on partial failure.
+  </Card>
+  <Card title="Event-Driven Monitoring" icon="information">
+    Emits events for failed requests and expired sessions so you can hook in your own logging or alerting.
+  </Card>
+</CardGrid>

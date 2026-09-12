@@ -1,0 +1,105 @@
+:root {
+  --sl-color-accent-low: #0f381e;
+  --sl-color-accent: #1db954;
+  --sl-color-accent-high: #1ed760;
+
+  --sl-color-white: #f4f4f5;
+  --sl-color-gray-1: #e4e4e7;
+  --sl-color-gray-2: #a1a1aa;
+  --sl-color-gray-3: #52525b;
+  --sl-color-gray-4: #27272a;
+  --sl-color-gray-5: #18181b;
+  --sl-color-gray-6: #121212;
+  --sl-color-black: #09090b;
+
+  --theme-radius: 8px;
+}
+
+:root[data-theme="light"] {
+  --sl-color-accent-low: #d1f2dc;
+  --sl-color-accent: #108a3c;
+  --sl-color-accent-high: #0a5c27;
+
+  --sl-color-white: #09090b;
+  --sl-color-gray-1: #18181b;
+  --sl-color-gray-2: #3f3f46;
+  --sl-color-gray-3: #71717a;
+  --sl-color-gray-4: #e4e4e7;
+  --sl-color-gray-5: #f4f4f5;
+  --sl-color-gray-6: #fafafa;
+  --sl-color-black: #ffffff;
+}
+
+.expressive-code .frame {
+  --ec-frm-editorBg: #121212;
+  --ec-frm-editorActiveTabBg: #1e1e1e;
+  --ec-brdRds: 8px;
+}
+
+.expressive-code {
+  --ec-brd-rad: var(--theme-radius);
+  margin: 1.25rem 0 !important;
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: var(--theme-radius);
+}
+
+.expressive-code .header {
+  background: var(--sl-color-gray-6) !important;
+  border-bottom: 1px solid var(--sl-color-gray-5) !important;
+}
+
+.expressive-code .title,
+.expressive-code .tab.active {
+  background: var(--sl-color-gray-5) !important;
+}
+
+.expressive-code button.copy {
+  border-radius: 6px !important;
+}
+
+.expressive-code button.copy:hover {
+  background-color: var(--sl-color-accent) !important;
+  color: #000000 !important;
+}
+
+.starlight-aside {
+  border-radius: var(--theme-radius) !important;
+  border-left-width: 3px !important;
+  padding: 1rem 1.25rem !important;
+  margin: 1.5rem 0 !important;
+  background-color: var(--sl-color-gray-6) !important;
+}
+
+.starlight-aside--note {
+  border-color: var(--sl-color-accent) !important;
+}
+
+.starlight-aside--note .starlight-aside__title {
+  color: var(--sl-color-accent-high) !important;
+}
+
+.starlight-aside--tip {
+  border-color: #8250dd !important;
+}
+.starlight-aside--tip .starlight-aside__title {
+  color: #8250dd !important;
+}
+
+.starlight-aside--caution {
+  border-color: #f59e0b !important;
+}
+.starlight-aside--caution .starlight-aside__title {
+  color: #f59e0b !important;
+}
+
+.starlight-aside--danger {
+  border-color: #ef4444 !important;
+}
+.starlight-aside--danger .starlight-aside__title {
+  color: #ef4444 !important;
+}
+
+.starlight-aside__title {
+  font-weight: 600 !important;
+  margin-bottom: 0.25rem !important;
+}

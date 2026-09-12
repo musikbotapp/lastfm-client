@@ -1,17 +1,10 @@
-import type {
-  BaseFailureResponse,
-  BaseSuccessResponse,
-  Image,
-  ResolvedImages,
-  CustomMetadata,
-  ResponseError,
-} from "./shared";
+import type { BaseFailureResponse, BaseSuccessResponse, Image, ResolvedImages, CustomMetadata } from "./shared";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // #region Request Options
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-interface BaseOptions {
+export interface BaseOptions {
   /**
    * The track name.
    */
@@ -25,7 +18,7 @@ interface BaseOptions {
 /**
  * {@link BaseOptions}
  */
-interface ExtendedBaseOptions extends BaseOptions {
+export interface ExtendedBaseOptions extends BaseOptions {
   /**
    * The Last.fm session key.
    */
@@ -137,14 +130,13 @@ export type ScrobbleBatchResponse =
 
 export type UpdateNowPlayingResponse = BaseSuccessResponse | BaseFailureResponse;
 
-interface SimilarTrackSuccessResponse extends BaseSuccessResponse {
+export interface SimilarTrackSuccessResponse extends BaseSuccessResponse {
   similarTracks: SimilarTrack[];
   trackName: string;
   artistName: string;
 }
 
-interface SimilarTrackFailureResponse extends BaseFailureResponse {
-  errorCode: ResponseError;
+export interface SimilarTrackFailureResponse extends BaseFailureResponse {
   similarTracks?: never;
   trackName?: never;
   artistName?: never;
@@ -155,15 +147,14 @@ export type SimilarTrackResponse = SimilarTrackSuccessResponse | SimilarTrackFai
 export type LoveResponse = BaseSuccessResponse | BaseFailureResponse;
 export type UnLoveResponse = BaseSuccessResponse | BaseFailureResponse;
 
-interface TrackSearchSuccessResponse extends BaseSuccessResponse {
+export interface TrackSearchSuccessResponse extends BaseSuccessResponse {
   tracks: SearchResultTrack[];
   totalResultsOnLastFm: number | null;
 }
 
-interface TrackSearchFailureResponse extends BaseFailureResponse {
+export interface TrackSearchFailureResponse extends BaseFailureResponse {
   tracks?: never;
   totalResultsOnLastFm?: never;
-  errorCode: ResponseError;
 }
 
 export type TrackSearchResponse = TrackSearchSuccessResponse | TrackSearchFailureResponse;

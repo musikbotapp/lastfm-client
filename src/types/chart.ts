@@ -1,4 +1,4 @@
-import type { BaseFailureResponse, BaseSuccessResponse, Image, ResolvedImages, ResponseError } from "./shared";
+import type { BaseFailureResponse, BaseSuccessResponse, Image, ResolvedImages } from "./shared";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // #region Request Options
@@ -29,24 +29,22 @@ export type ChartGetTopArtistsOptions = ChartGetTopTracksOptions;
 // #region Responses
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-interface ChartTopTracksSuccessResponse extends BaseSuccessResponse {
+export interface ChartTopTracksSuccessResponse extends BaseSuccessResponse {
   topTracks: ChartTopTrack[];
 }
 
-interface ChartTopTracksFailureResponse extends BaseFailureResponse {
+export interface ChartTopTracksFailureResponse extends BaseFailureResponse {
   topTracks?: never;
-  errorCode: ResponseError;
 }
 
 export type ChartTopTracksResponse = ChartTopTracksSuccessResponse | ChartTopTracksFailureResponse;
 
-interface ChartTopArtistsSuccessResponse extends BaseSuccessResponse {
+export interface ChartTopArtistsSuccessResponse extends BaseSuccessResponse {
   topArtists: ChartTopArtist[];
 }
 
-interface ChartTopArtistsFailureResponse extends BaseFailureResponse {
+export interface ChartTopArtistsFailureResponse extends BaseFailureResponse {
   topArtists?: never;
-  errorCode: ResponseError;
 }
 
 export type ChartTopArtistsResponse = ChartTopArtistsSuccessResponse | ChartTopArtistsFailureResponse;

@@ -1,4 +1,4 @@
-import type { BaseFailureResponse, BaseSuccessResponse, Image, ResolvedImages, ResponseError } from "./shared";
+import type { BaseFailureResponse, BaseSuccessResponse, Image, ResolvedImages } from "./shared";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // #region Request Options
@@ -37,24 +37,22 @@ export type GeoGetTopArtistsOptions = Omit<GeoGetTopTracksOptions, "location">;
 // #region Responses
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-interface GeoTopTracksSuccessResponse extends BaseSuccessResponse {
+export interface GeoTopTracksSuccessResponse extends BaseSuccessResponse {
   topTracks: GeoTopTrack[];
 }
 
-interface GeoTopTracksFailureResponse extends BaseFailureResponse {
+export interface GeoTopTracksFailureResponse extends BaseFailureResponse {
   topTracks?: never;
-  errorCode: ResponseError;
 }
 
 export type GeoTopTracksResponse = GeoTopTracksSuccessResponse | GeoTopTracksFailureResponse;
 
-interface GeoTopArtistsSuccessResponse extends BaseSuccessResponse {
+export interface GeoTopArtistsSuccessResponse extends BaseSuccessResponse {
   topArtists: GeoTopArtist[];
 }
 
-interface GeoTopArtistsFailureResponse extends BaseFailureResponse {
+export interface GeoTopArtistsFailureResponse extends BaseFailureResponse {
   topArtists?: never;
-  errorCode: ResponseError;
 }
 
 export type GeoTopArtistsResponse = GeoTopArtistsSuccessResponse | GeoTopArtistsFailureResponse;

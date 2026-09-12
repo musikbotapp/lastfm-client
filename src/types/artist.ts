@@ -1,10 +1,10 @@
-import type { BaseFailureResponse, BaseSuccessResponse, Image, ResolvedImages, ResponseError } from "./shared";
+import type { BaseFailureResponse, BaseSuccessResponse, Image, ResolvedImages } from "./shared";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // #region Request Options
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-interface GetArtistBase {
+export interface GetArtistBase {
   /**
    * The artist name.
    */
@@ -61,54 +61,50 @@ export interface ArtistSearchOptions {
 // #region Responses
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-interface SimilarArtistSuccessResponse extends BaseSuccessResponse {
+export interface SimilarArtistSuccessResponse extends BaseSuccessResponse {
   similarArtists: SimilarArtist[];
   artistName: string;
 }
 
-interface SimilarArtistFailureResponse extends BaseFailureResponse {
+export interface SimilarArtistFailureResponse extends BaseFailureResponse {
   similarArtists?: never;
   artistName?: never;
-  errorCode: ResponseError;
 }
 
 export type SimilarArtistResponse = SimilarArtistSuccessResponse | SimilarArtistFailureResponse;
 
-interface ArtistTopTracksSuccessResponse extends BaseSuccessResponse {
+export interface ArtistTopTracksSuccessResponse extends BaseSuccessResponse {
   topTracks: ArtistTopTrack[];
   artistName: string;
 }
 
-interface ArtistTopTracksFailureResponse extends BaseFailureResponse {
+export interface ArtistTopTracksFailureResponse extends BaseFailureResponse {
   topTracks?: never;
   artistName?: never;
-  errorCode: ResponseError;
 }
 
 export type ArtistTopTracksResponse = ArtistTopTracksSuccessResponse | ArtistTopTracksFailureResponse;
 
-interface ArtistTopAlbumsSuccessResponse extends BaseSuccessResponse {
+export interface ArtistTopAlbumsSuccessResponse extends BaseSuccessResponse {
   topAlbums: ArtistTopAlbum[];
   artistName: string;
 }
 
-interface ArtistTopAlbumsFailureResponse extends BaseFailureResponse {
+export interface ArtistTopAlbumsFailureResponse extends BaseFailureResponse {
   topAlbums?: never;
   artistName?: never;
-  errorCode: ResponseError;
 }
 
 export type ArtistTopAlbumsResponse = ArtistTopAlbumsSuccessResponse | ArtistTopAlbumsFailureResponse;
 
-interface ArtistSearchSuccessResponse extends BaseSuccessResponse {
+export interface ArtistSearchSuccessResponse extends BaseSuccessResponse {
   artists: SearchResultArtist[];
   totalResultsOnLastFm: number | null;
 }
 
-interface ArtistSearchFailureResponse extends BaseFailureResponse {
+export interface ArtistSearchFailureResponse extends BaseFailureResponse {
   artists?: never;
   totalResultsOnLastFm?: never;
-  errorCode: ResponseError;
 }
 
 export type ArtistSearchResponse = ArtistSearchSuccessResponse | ArtistSearchFailureResponse;

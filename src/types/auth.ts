@@ -1,17 +1,29 @@
-import type { ResponseError } from "./shared";
-
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // #endregion
 // #region Responses
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-export type TokenResponse =
-  | { success: true; errorCode?: never; errorMsg?: never; token: string }
-  | { success: false; errorCode: ResponseError; errorMsg: string; token?: never };
+import type { BaseFailureResponse, BaseSuccessResponse } from "./shared";
 
-export type SessionResponse =
-  | { success: true; errorCode?: never; errorMsg?: never; session: LastFmSession }
-  | { success: false; errorCode: ResponseError; errorMsg: string; session?: never };
+export interface TokenSuccessResponse extends BaseSuccessResponse {
+  token: string;
+}
+
+export interface TokenFailureResponse extends BaseFailureResponse {
+  token?: never;
+}
+
+export type TokenResponse = TokenSuccessResponse | TokenFailureResponse;
+
+export interface SessionSuccessResponse extends BaseSuccessResponse {
+  session: LastFmSession;
+}
+
+export interface SessionFailureResponse extends BaseFailureResponse {
+  session?: never;
+}
+
+export type SessionResponse = SessionSuccessResponse | SessionFailureResponse;
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // #endregion

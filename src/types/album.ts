@@ -1,4 +1,4 @@
-import type { BaseFailureResponse, BaseSuccessResponse, Image, ResolvedImages, ResponseError } from "./shared";
+import type { BaseFailureResponse, BaseSuccessResponse, Image, ResolvedImages } from "./shared";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // #region Request Options
@@ -26,15 +26,14 @@ export interface AlbumSearchOptions {
 // #region Responses
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-interface AlbumSearchSuccessResponse extends BaseSuccessResponse {
+export interface AlbumSearchSuccessResponse extends BaseSuccessResponse {
   albums: SearchResultAlbum[];
   totalResultsOnLastFm: number | null;
 }
 
-interface AlbumSearchFailureResponse extends BaseFailureResponse {
+export interface AlbumSearchFailureResponse extends BaseFailureResponse {
   albums?: never;
   totalResultsOnLastFm?: never;
-  errorCode: ResponseError;
 }
 
 export type AlbumSearchResponse = AlbumSearchSuccessResponse | AlbumSearchFailureResponse;

@@ -8,11 +8,9 @@ export interface BaseSuccessResponse {
 
 export interface BaseFailureResponse {
   success: false;
-  errorCode: string | number | null;
+  errorCode: string | number;
   errorMsg: string;
 }
-
-export type ResponseError = string | number;
 
 export type ImageSizes = "small" | "medium" | "large" | "extralarge" | "mega";
 

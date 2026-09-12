@@ -1,4 +1,4 @@
-import type { BaseFailureResponse, BaseSuccessResponse, Image, ResolvedImages, ResponseError } from "./shared";
+import type { BaseFailureResponse, BaseSuccessResponse, Image, ResolvedImages } from "./shared";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // #region Request Options
@@ -55,88 +55,81 @@ export type UserGetTopAlbumsOptions = UserGetTopTracksOptions;
 // #region Responses
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-interface UserInfoSuccessResponse extends BaseSuccessResponse {
+export interface UserInfoSuccessResponse extends BaseSuccessResponse {
   user: UserInfo;
 }
 
-interface UserInfoFailureResponse extends BaseFailureResponse {
+export interface UserInfoFailureResponse extends BaseFailureResponse {
   user?: never;
-  errorCode: ResponseError;
 }
 
 export type UserInfoResponse = UserInfoSuccessResponse | UserInfoFailureResponse;
 
-interface UserLovedTracksSuccessResponse extends BaseSuccessResponse {
+export interface UserLovedTracksSuccessResponse extends BaseSuccessResponse {
   lovedTracks: UserLovedTrack[];
   totalLoved: number | null;
 }
 
-interface UserLovedTracksFailureResponse extends BaseFailureResponse {
-  errorCode: ResponseError;
+export interface UserLovedTracksFailureResponse extends BaseFailureResponse {
   lovedTracks?: never;
   totalLoved?: never;
 }
 
 export type UserLovedTracksResponse = UserLovedTracksSuccessResponse | UserLovedTracksFailureResponse;
 
-interface UserRecentTracksSuccessResponse extends BaseSuccessResponse {
+export interface UserRecentTracksSuccessResponse extends BaseSuccessResponse {
   recentTracks: UserRecentTrack[];
   nowPlaying: boolean;
 }
 
-interface UserRecentTracksFailureResponse extends BaseFailureResponse {
-  errorCode: ResponseError;
+export interface UserRecentTracksFailureResponse extends BaseFailureResponse {
   recentTracks?: never;
   nowPlaying?: never;
 }
 
 export type UserRecentTracksResponse = UserRecentTracksSuccessResponse | UserRecentTracksFailureResponse;
 
-interface UserTopTracksSuccessResponse extends BaseSuccessResponse {
+export interface UserTopTracksSuccessResponse extends BaseSuccessResponse {
   topTracks: UserTopTrack[];
   uniqueTracks: number | null;
 }
 
-interface UserTopTracksFailureResponse extends BaseFailureResponse {
-  errorCode: ResponseError;
+export interface UserTopTracksFailureResponse extends BaseFailureResponse {
   topTracks?: never;
   uniqueTracks?: never;
 }
 
 export type UserTopTracksResponse = UserTopTracksSuccessResponse | UserTopTracksFailureResponse;
 
-interface UserTopArtistsSuccessResponse extends BaseSuccessResponse {
+export interface UserTopArtistsSuccessResponse extends BaseSuccessResponse {
   topArtists: UserTopArtist[];
   uniqueArtists: number | null;
 }
 
-interface UserTopArtistsFailureResponse extends BaseFailureResponse {
-  errorCode: ResponseError;
+export interface UserTopArtistsFailureResponse extends BaseFailureResponse {
   topArtists?: never;
   uniqueArtists?: never;
 }
 
 export type UserTopArtistsResponse = UserTopArtistsSuccessResponse | UserTopArtistsFailureResponse;
 
-interface UserTopAlbumsSuccessResponse extends BaseSuccessResponse {
+export interface UserTopAlbumsSuccessResponse extends BaseSuccessResponse {
   topAlbums: UserTopAlbum[];
   uniqueAlbums: number | null;
 }
 
-interface UserTopAlbumsFailureResponse extends BaseFailureResponse {
-  errorCode: ResponseError;
+export interface UserTopAlbumsFailureResponse extends BaseFailureResponse {
   topAlbums?: never;
   uniqueAlbums?: never;
 }
 
 export type UserTopAlbumsResponse = UserTopAlbumsSuccessResponse | UserTopAlbumsFailureResponse;
 
-interface UserNowPlayingSuccessResponse extends BaseSuccessResponse {
+export interface UserNowPlayingSuccessResponse extends BaseSuccessResponse {
   track: UserNowPlayingTrack;
 }
 
-interface UserNowPlayingFailureResponse extends BaseFailureResponse {
-  errorCode: ResponseError;
+export interface UserNowPlayingFailureResponse extends BaseFailureResponse {
   track?: never;
 }
 

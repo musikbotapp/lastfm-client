@@ -81,6 +81,18 @@ export interface APIErrorPayload {
   syntaxError?: true;
 }
 
-export type APIResponse<T> =
-  | { success: true; data: T; errorCode?: never; errorMsg?: never }
-  | { success: false; errorCode: string | number; errorMsg: string };
+export interface APISuccessResponse<T> {
+  success: true;
+  data: T;
+  errorCode?: never;
+  errorMsg?: never;
+}
+
+export interface APIFailureResponse {
+  success: false;
+  errorCode: string | number;
+  errorMsg: string;
+  data?: never;
+}
+
+export type APIResponse<T> = APISuccessResponse<T> | APIFailureResponse;

@@ -25,6 +25,17 @@ export class GeoStructure {
    * @returns A promise that resolves to the API response object.
    * - **Success**: `{ success: true, topTracks: Array }`
    * - **Failure**: `{ success: false, errorCode: "MISSING_REQUIREMENTS" | "GEO_NO_TOP_TRACKS" | number | string, errorMsg: string }`
+   * @example
+   * ```ts
+   * const res = await fm.geo.getTopTracks({
+   *   country: "Spain",
+   *   limit: 5,
+   * });
+   *
+   * if (res.success) {
+   *   console.log(`Top track in Spain: ${res.topTracks[0].name}`);
+   * }
+   * ```
    */
   public async getTopTracks(options: GeoGetTopTracksOptions): Promise<GeoTopTracksResponse> {
     const { country, location, limit, page } = options;
@@ -101,6 +112,17 @@ export class GeoStructure {
    * @returns A promise that resolves to the API response object.
    * - **Success**: `{ success: true, topArtists: Array }`
    * - **Failure**: `{ success: false, errorCode: "MISSING_REQUIREMENTS" | "GEO_NO_TOP_ARTISTS" | number | string, errorMsg: string }`
+   * @example
+   * ```ts
+   * const res = await fm.geo.getTopArtists({
+   *   country: "Japan",
+   *   limit: 5,
+   * });
+   *
+   * if (res.success) {
+   *   console.log(`Top artist in Japan: ${res.topArtists[0].name}`);
+   * }
+   * ```
    */
   public async getTopArtists(options: GeoGetTopArtistsOptions): Promise<GeoTopArtistsResponse> {
     const { country, limit, page } = options;

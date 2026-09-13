@@ -37,6 +37,14 @@ export class UserStructure {
    * @returns A promise that resolves to the API response object.
    * - **Success**: `{ success: true, user: object }`
    * - **Failure**: `{ success: false, errorCode: "MISSING_REQUIREMENTS" | "NO_USER_DATA" | number | string, errorMsg: string }`
+   * @example
+   * ```ts
+   * const res = await fm.user.getInfo("USERNAME");
+   *
+   * if (res.success) {
+   *   console.log(`User ${res.user.name} has ${res.user.scrobbles} total scrobbles.`);
+   * }
+   * ```
    */
   public async getInfo(user: string): Promise<UserInfoResponse> {
     if (!isNonEmptyString(user)) {
@@ -84,6 +92,17 @@ export class UserStructure {
    * @returns A promise that resolves to the API response object.
    * - **Success**: `{ success: true, lovedTracks: Array, totalLoved: number | null }`
    * - **Failure**: `{ success: false, errorCode: "MISSING_REQUIREMENTS" | "NO_LOVED_TRACKS" | number | string, errorMsg: string }`
+   * @example
+   * ```ts
+   * const res = await fm.user.getLovedTracks({
+   *   user: "USERNAME",
+   *   limit: 5,
+   * });
+   *
+   * if (res.success) {
+   *   console.log(`First loved track: ${res.lovedTracks[0].name}`);
+   * }
+   * ```
    */
   public async getLovedTracks(options: UserGetLovedTracksOptions): Promise<UserLovedTracksResponse> {
     const { user, limit, page } = options;
@@ -152,6 +171,17 @@ export class UserStructure {
    * @returns A promise that resolves to the API response object.
    * - **Success**: `{ success: true, recentTracks: Array, nowPlaying: boolean }`
    * - **Failure**: `{ success: false, errorCode: "MISSING_REQUIREMENTS" | "NO_RECENT_TRACKS" | number | string, errorMsg: string }`
+   * @example
+   * ```ts
+   * const res = await fm.user.getRecentTracks({
+   *   user: "USERNAME",
+   *   limit: 10,
+   * });
+   *
+   * if (res.success) {
+   *   console.log(`Most recent track: ${res.recentTracks[0].name}`);
+   * }
+   * ```
    */
   public async getRecentTracks(options: UserGetRecentTracksOptions): Promise<UserRecentTracksResponse> {
     const { user, limit, page } = options;
@@ -222,6 +252,18 @@ export class UserStructure {
    * @returns A promise that resolves to the API response object.
    * - **Success**: `{ success: true, topTracks: Array, uniqueTracks: number | null }`
    * - **Failure**: `{ success: false, errorCode: "MISSING_REQUIREMENTS" | "NO_TOP_TRACKS" | number | string, errorMsg: string }`
+   * @example
+   * ```ts
+   * const res = await fm.user.getTopTracks({
+   *   user: "USERNAME",
+   *   limit: 10,
+   *   period: "7day",
+   * });
+   *
+   * if (res.success) {
+   *   console.log(`Top track this week: ${res.topTracks[0].name}`);
+   * }
+   * ```
    */
   public async getTopTracks(options: UserGetTopTracksOptions): Promise<UserTopTracksResponse> {
     const { user, limit, page, period } = options;
@@ -296,6 +338,17 @@ export class UserStructure {
    * @returns A promise that resolves to the API response object.
    * - **Success**: `{ success: true, topArtists: Array, uniqueArtists: number | null }`
    * - **Failure**: `{ success: false, errorCode: "MISSING_REQUIREMENTS" | "NO_TOP_ARTISTS" | number | string, errorMsg: string }`
+   * @example
+   * ```ts
+   * const res = await fm.user.getTopArtists({
+   *   user: "USERNAME",
+   *   limit: 10,
+   * });
+   *
+   * if (res.success) {
+   *   console.log(`Top artist: ${res.topArtists[0].name}`);
+   * }
+   * ```
    */
   public async getTopArtists(options: UserGetTopArtistsOptions): Promise<UserTopArtistsResponse> {
     const { user, limit, page, period } = options;
@@ -364,6 +417,17 @@ export class UserStructure {
    * @returns A promise that resolves to the API response object.
    * - **Success**: `{ success: true, topAlbums: Array, uniqueAlbums: number | null }`
    * - **Failure**: `{ success: false, errorCode: "MISSING_REQUIREMENTS" | "NO_TOP_ALBUMS" | number | string, errorMsg: string }`
+   * @example
+   * ```ts
+   * const res = await fm.user.getTopAlbums({
+   *   user: "USERNAME",
+   *   limit: 10,
+   * });
+   *
+   * if (res.success) {
+   *   console.log(`Top album: ${res.topAlbums[0].name}`);
+   * }
+   * ```
    */
   public async getTopAlbums(options: UserGetTopAlbumsOptions): Promise<UserTopAlbumsResponse> {
     const { user, limit, page, period } = options;
@@ -436,6 +500,14 @@ export class UserStructure {
    * @returns A promise that resolves to the API response object.
    * - **Success**: `{ success: true, track: object }`
    * - **Failure**: `{ success: false, errorCode: "MISSING_REQUIREMENTS" | "NOT_PLAYING" | "TRACK_UNAVAILABLE" | number | string, errorMsg: string }`
+   * @example
+   * ```ts
+   * const res = await fm.user.getNowPlaying("USERNAME");
+   *
+   * if (res.success) {
+   *   console.log(`Listening to: ${res.track.name} by ${res.track.artist.name}`);
+   * }
+   * ```
    */
   public async getNowPlaying(user: string): Promise<UserNowPlayingResponse> {
     const response = await this.getRecentTracks({ user, limit: 1 });

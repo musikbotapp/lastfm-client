@@ -31,6 +31,17 @@ export class ArtistStructure {
    * @returns A promise that resolves to the API response object.
    * - **Success**: `{ success: true, similarArtists: Array, artistName: string }`
    * - **Failure**: `{ success: false, errorCode: "MISSING_REQUIREMENTS" | "NO_SIMILAR_ARTISTS" | number | string, errorMsg: string }`
+   * @example
+   * ```ts
+   * const res = await fm.artist.getSimilar({
+   *   artist: "Michael Jackson",
+   *   limit: 5,
+   * });
+   *
+   * if (res.success) {
+   *   console.log(`Similar to Michael Jackson: ${res.similarArtists.map((a) => a.name).join(", ")}`);
+   * }
+   * ```
    */
   public async getSimilar(options: ArtistGetSimilarOptions): Promise<SimilarArtistResponse> {
     const { artist, limit, autoCorrect } = options;
@@ -88,6 +99,17 @@ export class ArtistStructure {
    * @returns A promise that resolves to the API response object.
    * - **Success**: `{ success: true, topTracks: Array, artistName: string }`
    * - **Failure**: `{ success: false, errorCode: "MISSING_REQUIREMENTS" | "ARTIST_NO_TOP_TRACKS" | number | string, errorMsg: string }`
+   * @example
+   * ```ts
+   * const res = await fm.artist.getTopTracks({
+   *   artist: "Daft Punk",
+   *   limit: 5,
+   * });
+   *
+   * if (res.success) {
+   *   console.log(`Top Daft Punk track: ${res.topTracks[0].name}`);
+   * }
+   * ```
    */
   public async getTopTracks(options: ArtistGetTopTracksOptions): Promise<ArtistTopTracksResponse> {
     const { artist, limit, autoCorrect } = options;
@@ -152,6 +174,17 @@ export class ArtistStructure {
    * @returns A promise that resolves to the API response object.
    * - **Success**: `{ success: true, topAlbums: Array, artistName: string }`
    * - **Failure**: `{ success: false, errorCode: "MISSING_REQUIREMENTS" | "ARTIST_NO_TOP_ALBUMS" | number | string, errorMsg: string }`
+   * @example
+   * ```ts
+   * const res = await fm.artist.getTopAlbums({
+   *   artist: "The Weeknd",
+   *   limit: 5,
+   * });
+   *
+   * if (res.success) {
+   *   console.log(`Top The Weeknd album: ${res.topAlbums[0].name}`);
+   * }
+   * ```
    */
   public async getTopAlbums(options: ArtistGetTopAlbumsOptions): Promise<ArtistTopAlbumsResponse> {
     const { artist, limit, autoCorrect } = options;
@@ -214,6 +247,17 @@ export class ArtistStructure {
    * @returns A promise that resolves to the API response object.
    * - **Success**: `{ success: true, artists: Array, totalResultsOnLastFm: number | null }`
    * - **Failure**: `{ success: false, errorCode: "MISSING_REQUIREMENTS" | "NO_ARTIST_MATCHES" | number | string, errorMsg: string }`
+   * @example
+   * ```ts
+   * const res = await fm.artist.search({
+   *   artist: "Michael Jackson",
+   *   limit: 5,
+   * });
+   *
+   * if (res.success) {
+   *   console.log(`Found ${res.artists.length} matching artists`);
+   * }
+   * ```
    */
   public async search(options: ArtistSearchOptions): Promise<ArtistSearchResponse> {
     const { artist, limit, page } = options;

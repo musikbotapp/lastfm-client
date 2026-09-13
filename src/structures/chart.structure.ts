@@ -25,6 +25,16 @@ export class ChartStructure {
    * @returns A promise that resolves to the API response object.
    * - **Success**: `{ success: true, tracks: Array }`
    * - **Failure**: `{ success: false, errorCode: "MISSING_REQUIREMENTS" | "NO_TOP_TRACKS" | number | string, errorMsg: string }`
+   * @example
+   * ```ts
+   * const res = await fm.chart.getTopTracks({
+   *   limit: 5,
+   * });
+   *
+   * if (res.success) {
+   *   console.log(`Top chart track: ${res.topTracks[0].name}`);
+   * }
+   * ```
    */
   public async getTopTracks(options: ChartGetTopTracksOptions = {}): Promise<ChartTopTracksResponse> {
     const { limit, page } = options;
@@ -89,6 +99,16 @@ export class ChartStructure {
    * @returns A promise that resolves to the API response object.
    * - **Success**: `{ success: true, artists: Array }`
    * - **Failure**: `{ success: false, errorCode: "MISSING_REQUIREMENTS" | "NO_TOP_ARTISTS" | number | string, errorMsg: string }`
+   * @example
+   * ```ts
+   * const res = await fm.chart.getTopArtists({
+   *   limit: 5,
+   * });
+   *
+   * if (res.success) {
+   *   console.log(`Top chart artist: ${res.topArtists[0].name}`);
+   * }
+   * ```
    */
   public async getTopArtists(options: ChartGetTopArtistsOptions = {}): Promise<ChartTopArtistsResponse> {
     const { limit, page } = options;

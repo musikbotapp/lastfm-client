@@ -97,7 +97,7 @@ console.info(res.lovedTracks);
 ```
 
 ```typescript
-const res = await fm.user.getNowPlaying({ user: "username" });
+const res = await fm.user.getNowPlaying("username");
 
 if (!res.success) return console.warn(`User is currently offline.`);
 

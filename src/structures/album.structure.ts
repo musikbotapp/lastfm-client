@@ -18,6 +18,17 @@ export class AlbumStructure {
    * @returns A promise that resolves to the API response object.
    * - **Success**: `{ success: true, albums: Array, totalResultsOnLastFm: number | null }`
    * - **Failure**: `{ success: false, errorCode: "MISSING_REQUIREMENTS" | "NO_ALBUM_MATCHES" | number | string, errorMsg: string }`
+   * @example
+   * ```ts
+   * const res = await fm.album.search({
+   *   album: "Hurry Up Tomorrow",
+   *   limit: 5,
+   * });
+   *
+   * if (res.success) {
+   *   console.log(`Found ${res.albums.length} matching albums`);
+   * }
+   * ```
    */
   public async search(options: AlbumSearchOptions): Promise<AlbumSearchResponse> {
     const { album, limit, page } = options;

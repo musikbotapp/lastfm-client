@@ -43,6 +43,19 @@ export class TrackStructure {
    * @returns A promise that resolves to the API response object.
    * - **Success**: `{ success: true }`
    * - **Failure**: `{ success: false, errorCode: "MISSING_REQUIREMENTS" | number | string, errorMsg: string }`
+   * @example
+   * ```ts
+   * const res = await fm.track.scrobble({
+   *   sk: "SESSION_KEY",
+   *   artist: "Michael Jackson",
+   *   track: "Billie Jean",
+   *   timestamp: Math.floor(Date.now() / 1000),
+   * });
+   *
+   * if (res.success) {
+   *   console.log("Track scrobbled successfully");
+   * }
+   * ```
    */
   public async scrobble(options: ScrobbleOptions): Promise<ScrobbleResponse> {
     const { sk, artist, track, timestamp, chosenByUser, duration, meta } = options;
@@ -85,6 +98,20 @@ export class TrackStructure {
    * @returns A promise that resolves to the API response object.
    * - **Success**: `{ success: true, scrobbledCount: number }`
    * - **Failure**: `{ success: false, errorCode: "MISSING_REQUIREMENTS" | number | string, errorMsg: string, scrobbledCount: number }`
+   * @example
+   * ```ts
+   * const res = await fm.track.scrobbleBatch({
+   *   sk: "SESSION_KEY",
+   *   tracks: [
+   *     { artist: "Michael Jackson", track: "Billie Jean", timestamp: 1600000000 },
+   *     { artist: "Daft Punk", track: "One More Time", timestamp: 1600000300 },
+   *   ],
+   * });
+   *
+   * if (res.success) {
+   *   console.log(`Scrobbled ${res.scrobbledCount} tracks.`);
+   * }
+   * ```
    */
   public async scrobbleBatch(options: ScrobbleBatchOptions): Promise<ScrobbleBatchResponse> {
     const { sk, tracks, meta } = options;
@@ -135,6 +162,18 @@ export class TrackStructure {
    * @returns A promise that resolves to the API response object.
    * - **Success**: `{ success: true }`
    * - **Failure**: `{ success: false, errorCode: "MISSING_REQUIREMENTS" | number | string, errorMsg: string }`
+   * @example
+   * ```ts
+   * const res = await fm.track.updateNowPlaying({
+   *   sk: "SESSION_KEY",
+   *   artist: "Michael Jackson",
+   *   track: "Billie Jean",
+   * });
+   *
+   * if (res.success) {
+   *   console.log("Now playing updated");
+   * }
+   * ```
    */
   public async updateNowPlaying(options: UpdateNowPlayingOptions): Promise<UpdateNowPlayingResponse> {
     const { sk, artist, track, duration, meta } = options;
@@ -172,6 +211,18 @@ export class TrackStructure {
    * @returns A promise that resolves to the API response object.
    * - **Success**: `{ success: true, similarTracks: Array, trackName: string, artistName: string }`
    * - **Failure**: `{ success: false, errorCode: "MISSING_REQUIREMENTS" | "NO_SIMILAR_TRACKS" | number | string, errorMsg: string }`
+   * @example
+   * ```ts
+   * const res = await fm.track.getSimilar({
+   *   artist: "Michael Jackson",
+   *   track: "Billie Jean",
+   *   limit: 5,
+   * });
+   *
+   * if (res.success) {
+   *   console.log(`Top similar track: ${res.similarTracks[0].name}`);
+   * }
+   * ```
    */
   public async getSimilar(options: TrackGetSimilarOptions): Promise<SimilarTrackResponse> {
     const { track, artist, limit, autoCorrect } = options;
@@ -243,6 +294,18 @@ export class TrackStructure {
    * @returns A promise that resolves to the API response object.
    * - **Success**: `{ success: true }`
    * - **Failure**: `{ success: false, errorCode: "MISSING_REQUIREMENTS" | number | string, errorMsg: string }`
+   * @example
+   * ```ts
+   * const res = await fm.track.love({
+   *   sk: "SESSION_KEY",
+   *   artist: "Michael Jackson",
+   *   track: "Billie Jean",
+   * });
+   *
+   * if (res.success) {
+   *   console.log("Track loved");
+   * }
+   * ```
    */
   public async love(options: TrackLoveOptions): Promise<LoveResponse> {
     const { sk, track, artist, meta } = options;
@@ -279,6 +342,18 @@ export class TrackStructure {
    * @returns A promise that resolves to the API response object.
    * - **Success**: `{ success: true }`
    * - **Failure**: `{ success: false, errorCode: "MISSING_REQUIREMENTS" | number | string, errorMsg: string }`
+   * @example
+   * ```ts
+   * const res = await fm.track.unlove({
+   *   sk: "SESSION_KEY",
+   *   artist: "Michael Jackson",
+   *   track: "Billie Jean",
+   * });
+   *
+   * if (res.success) {
+   *   console.log("Track unloved");
+   * }
+   * ```
    */
   public async unlove(options: TrackUnLoveOptions): Promise<UnLoveResponse> {
     const { sk, track, artist, meta } = options;
@@ -315,6 +390,17 @@ export class TrackStructure {
    * @returns A promise that resolves to the API response object.
    * - **Success**: `{ success: true, tracks: Array, totalResultsOnLastFm: number | null }`
    * - **Failure**: `{ success: false, errorCode: "MISSING_REQUIREMENTS" | "NO_TRACK_MATCHES" | number | string, errorMsg: string }`
+   * @example
+   * ```ts
+   * const res = await fm.track.search({
+   *   track: "Billie Jean",
+   *   limit: 5,
+   * });
+   *
+   * if (res.success) {
+   *   console.log(`First result: ${res.tracks[0].name} by ${res.tracks[0].artist}`);
+   * }
+   * ```
    */
   public async search(options: TrackSearchOptions): Promise<TrackSearchResponse> {
     const { track, artist, limit, page } = options;

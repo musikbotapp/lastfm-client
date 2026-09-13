@@ -61,7 +61,7 @@ export class REST {
    * - **Success**: `{ success: true, data: T }`
    * - **Failure**: `{ success: false, errorCode: number | string, errorMsg: string }`
    */
-  public async get<T>(apiMethod: APIMethod, options: RequestData): Promise<APIResponse<T>> {
+  public async get<T>(apiMethod: APIMethod, options: RequestData = {}): Promise<APIResponse<T>> {
     return this.#request({ ...options, apiMethod, method: RequestMethod.GET, retries: this.#retries });
   }
 
@@ -74,7 +74,7 @@ export class REST {
    * - **Success**: `{ success: true, data: T }`
    * - **Failure**: `{ success: false, errorCode: number | string, errorMsg: string }`
    */
-  public async post<T>(apiMethod: APIMethod, options: RequestData): Promise<APIResponse<T>> {
+  public async post<T>(apiMethod: APIMethod, options: RequestData = {}): Promise<APIResponse<T>> {
     return this.#request({ ...options, apiMethod, method: RequestMethod.POST, retries: this.#retries });
   }
 

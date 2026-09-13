@@ -16,6 +16,14 @@ export class AuthStructure {
    * @returns Token needed in {@link getUrl} and {@link getSession} to obtain session key for the user.
    * - **Success**: `{ success: true, token: string }`
    * - **Failure**: `{ success: false, errorCode: "NO_TOKEN" | number | null, errorMsg: string }`
+   * @example
+   * ```ts
+   * const res = await fm.auth.getToken();
+   *
+   * if (res.success) {
+   *   console.log(`Token: ${res.token}`);
+   * }
+   * ```
    */
   public async getToken(): Promise<TokenResponse> {
     const response = await this.#client.rest.get<{ token?: string }>("auth.gettoken", {
@@ -33,6 +41,14 @@ export class AuthStructure {
    *
    * @param token - Authentication token from {@link getToken}.
    * @returns URL to Last.fm app authentication site, or `false` if the provided token is an empty string.
+   * @example
+   * ```ts
+   * const url = fm.auth.getUrl("your_auth_token");
+   *
+   * if (url) {
+   *   console.log(`Auth URL: ${url}`);
+   * }
+   * ```
    */
   public getUrl(token: string): string | false {
     if (!isNonEmptyString(token)) {
@@ -48,6 +64,14 @@ export class AuthStructure {
    *
    * @param url - Custom callback URL.
    * @returns URL to Last.fm app authentication site with callback URL, or `false` if the provided URL is an empty string.
+   * @example
+   * ```ts
+   * const callbackUrl = fm.auth.getCallbackUrl("https://example.com/callback");
+   *
+   * if (callbackUrl) {
+   *   console.log(`Auth URL with callback: ${callbackUrl}`);
+   * }
+   * ```
    */
   public getCallbackUrl(url: string): string | false {
     if (!isNonEmptyString(url)) {
@@ -64,6 +88,14 @@ export class AuthStructure {
    * @returns Session response.
    * - **Success**: `{ success: true, session: LastFmSession }`
    * - **Failure**: `{ success: false, errorCode: "MISSING_REQUIREMENTS" | number | string, errorMsg: string }`
+   * @example
+   * ```ts
+   * const res = await fm.auth.getSession("authorized_token");
+   *
+   * if (res.success) {
+   *   console.log(`Session key: ${res.session.key}`);
+   * }
+   * ```
    */
   public async getSession(token: string): Promise<SessionResponse> {
     if (!isNonEmptyString(token)) {
